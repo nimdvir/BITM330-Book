@@ -1,0 +1,101 @@
+BreedID,BreedName,Size,AnimalType
+1,Abyssinian,Small,Cat
+2,American Bobtail,Small,Cat
+3,American Curl,Large,Cat
+4,American Shorthair,Large,Cat
+5,Balinese,Small,Cat
+6,Bengal,Large,Cat
+7,Birman,Medium,Cat
+8,Bombay,Medium,Cat
+9,British Shorthair,Medium,Cat
+10,Burmese,Medium,Cat
+11,Chartreux,Large,Cat
+12,Cornish Rex,Large,Cat
+13,Devon Rex,Small,Cat
+14,Egyptian Mau,Small,Cat
+15,Exotic Shorthair,Medium,Cat
+16,Himalayan,Large,Cat
+17,Japanese Bobtail,Medium,Cat
+18,Korat,Medium,Cat
+19,Maine Coon,Medium,Cat
+20,Manx,Large,Cat
+21,Norwegian Forest,Medium,Cat
+22,Ocicat,Medium,Cat
+23,Oriental,Medium,Cat
+24,Persian,Small,Cat
+25,Ragdoll,Small,Cat
+26,Russian Blue,Large,Cat
+27,Scottish Fold,Large,Cat
+28,Selkirk Rex,Small,Cat
+29,Siamese,Large,Cat
+30,Siberian,Large,Cat
+31,Singapura,Medium,Cat
+32,Somali,Small,Cat
+33,Sphynx,Small,Cat
+34,Tonkinese,Small,Cat
+35,Turkish Angora,Large,Cat
+36,Turkish Van,Medium,Cat
+37,Beagle,Medium,Dog
+38,Border Collie,Small,Dog
+39,Boxer,Large,Dog
+40,Bulldog,Medium,Dog
+41,Chihuahua,Medium,Dog
+42,Cocker Spaniel,Small,Dog
+43,Dachshund,Small,Dog
+44,Dalmatian,Small,Dog
+45,Doberman Pinscher,Large,Dog
+46,French Bulldog,Large,Dog
+47,German Shepherd,Small,Dog
+48,Golden Retriever,Large,Dog
+49,Great Dane,Large,Dog
+50,Greyhound,Large,Dog
+51,Labrador Retriever,Large,Dog
+52,Maltese,Medium,Dog
+53,Newfoundland,Medium,Dog
+54,Papillon,Medium,Dog
+55,Pekingese,Large,Dog
+56,Pomeranian,Small,Dog
+57,Poodle,Medium,Dog
+58,Pug,Small,Dog
+59,Rottweiler,Medium,Dog
+60,Saint Bernard,Medium,Dog
+61,Samoyed,Medium,Dog
+62,Schnauzer,Large,Dog
+63,Shiba Inu,Large,Dog
+64,Shih Tzu,Medium,Dog
+65,Siberian Husky,Large,Dog
+66,Staffordshire Terrier,Large,Dog
+67,Weimaraner,Large,Dog
+68,Whippet,Large,Dog
+69,Yorkshire Terrier,Medium,Dog
+70,Akita,Small,Dog
+71,Australian Shepherd,Large,Dog
+72,Basset Hound,Medium,Dog
+73,Bernese Mountain Dog,Medium,Dog
+74,Boston Terrier,Small,Dog
+75,Cane Corso,Small,Dog
+76,Cavalier King Charles Spaniel,Small,Dog
+77,English Setter,Large,Dog
+78,Irish Setter,Large,Dog
+79,Leonberger,Small,Dog
+80,Lhasa Apso,Medium,Dog
+81,Pointer,Small,Dog
+82,Saluki,Medium,Dog
+83,Vizsla,Medium,Dog
+84,West Highland White Terrier,Medium,Dog
+85,Alaskan Malamute,Medium,Dog
+86,American Eskimo Dog,Large,Dog
+87,Belgian Malinois,Small,Dog
+88,Rottweiler Variant,Large,Dog
+89,Somali Variant,Medium,Cat
+90,Alaskan Malamute Variant,Large,Dog
+91,Border Collie Variant,Medium,Dog
+92,Alaskan Malamute Variant Variant,Small,Dog
+93,Rottweiler Variant Variant,Large,Dog
+94,Somali Variant,Medium,Cat
+95,Vizsla Variant,Small,Dog
+96,Somali Variant Variant,Large,Cat
+97,Norwegian Forest Variant,Medium,Cat
+98,Pug Variant,Large,Dog
+99,Border Collie Variant Variant,Medium,Dog
+100,German Shepherd Variant,Small,Dog

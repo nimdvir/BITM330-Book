@@ -1,0 +1,58 @@
+Chapter 15: Designing a Grading Database
+Theory, Structure, and Application
+BITM 330 – Spring 2025
+
+Purpose of Normalized Design
+Group data logically and reduce redundancy
+Improve data integrity and minimize errors
+Enable scalable, flexible queries
+
+Core Tables in the Grading Database
+STUDENT – student info
+DELIVERABLE – quizzes, exams, projects
+STUDENT_GRADE – links students to deliverables and scores
+GRADE_WEIGHT – defines relative importance
+ATTENDANCE – tracks presence
+ASSIGNMENT_METADATA – optional metadata for each type
+
+Relationships Between Tables
+STUDENT → STUDENT_GRADE, ATTENDANCE
+DELIVERABLE → STUDENT_GRADE
+DELIVERABLE.Type → GRADE_WEIGHT.Type
+ASSIGNMENT_METADATA.Type → DELIVERABLE.Type
+
+Why Separate Tables?
+Normalize to prevent duplicate values
+Separate business logic (GRADE_WEIGHT)
+Link attendance by date and student
+Reuse deliverables across semesters
+
+Why Query by Date?
+Filter due dates and attendance windows
+Create time-based trends
+Enable reporting and analytics
+
+Why Use Forms in Access?
+Minimize errors during data entry
+Make input intuitive for non-technical users
+Enable dropdowns and validations
+
+Weighted Grade Logic
+Each type has a defined weight (e.g., Quiz = 0.3)
+Final grade is weighted average across all scores
+SQL joins connect score to weight
+
+Attendance Analysis
+Track number of classes per student
+Identify participation patterns
+Correlate attendance with performance
+
+Opportunities for Expansion
+Add Instructors and Courses
+Track semester-based deliverables
+Integrate rubrics and feedback
+
+Conclusion
+Design mirrors real-world grading systems
+Reinforces relational database thinking
+Prepares students for business data design

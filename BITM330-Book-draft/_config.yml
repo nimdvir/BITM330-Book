@@ -1,0 +1,23 @@
+title: "BITM 330: Improving Business Performance with Information Technologies"
+author: "Dr. Nim Dvir"
+copyright: "2025, Massry School of Business, SUNY Albany"
+logo: images/ualbany-logo.png
+
+repository:
+  url: https://github.com/nimdvir/Courses
+  path_to_book: BITM330/BITM330-Book
+  branch: main
+
+html:
+  favicon: images/favicon.ico
+  use_repository_button: true
+  use_issues_button: true
+  home_page_in_navbar: true
+  extra_footer: |
+    <p>© 2025 Dr. Nim Dvir — Massry School of Business, SUNY Albany</p>
+
+execute:
+  execute_notebooks: auto
+
+bibtex_bibfiles:
+  - references.bib

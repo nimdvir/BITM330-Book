@@ -1,0 +1,1181 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Using Mermaid for Entity-Relationship Diagrams &#8212; BITM 330: Improving Business Performance with Information Technologies</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapters/mermeaid';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="08 final project" href="08_final_project.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ualbany-logo.png" class="logo__image only-light" alt="BITM 330: Improving Business Performance with Information Technologies - Home"/>
+    <script>document.write(`<img src="../_static/ualbany-logo.png" class="logo__image only-dark" alt="BITM 330: Improving Business Performance with Information Technologies - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    BITM 330 – Improving Business Performance with Information Technologies
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Foundations of Information Systems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_intro_to_data.html">01 intro to data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_information_systems.html">02 information systems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Databases and SQL</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="03_database_design.html">03 database design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_sql_basics.html">04 sql basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_advanced_sql.html">05 advanced sql</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_access_projects.html">06 access projects</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Business Intelligence and Analytics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="07_business_intelligence.html">07 business intelligence</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Projects and Case Studies</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="08_final_project.html">08 final project</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Using Mermaid for Entity-Relationship Diagrams</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/nimdvir/Courses" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/nimdvir/Courses/issues/new?title=Issue%20on%20page%20%2FChapters/mermeaid.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chapters/mermeaid.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Using Mermaid for Entity-Relationship Diagrams</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-mermaid-erd">Introduction to Mermaid ERD</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-choose-mermaid-for-erd">Why Choose Mermaid for ERD?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-mermaid-erd-syntax">Basic Mermaid ERD Syntax</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-structure">Core Structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-entities-and-attributes">Defining Entities and Attributes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-data-types">Supported Data Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primary-and-foreign-keys">Primary and Foreign Keys</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-cardinality-notation">Relationship Cardinality Notation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cardinality-symbols">Cardinality Symbols</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-relationship-syntax">Reading Relationship Syntax</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-erd-examples">Complete ERD Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-university-database">Simple University Database</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-commerce-system">E-Commerce System</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-mermaid-erd-features">Advanced Mermaid ERD Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weak-entity-representation">Weak Entity Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recursive-relationships">Recursive Relationships</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subtype-supertype-relationships">Subtype/Supertype Relationships</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#styling-and-configuration">Styling and Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-styling">Basic Styling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#themes">Themes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-with-documentation">Integration with Documentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-gitlab-markdown">GitHub/GitLab Markdown</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vs-code-integration">VS Code Integration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices-for-mermaid-erd">Best Practices for Mermaid ERD</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-organization">Code Organization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#readability-tips">Readability Tips</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-well-organized-erd">Example of Well-Organized ERD</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-patterns-and-solutions">Common Patterns and Solutions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#many-to-many-relationships">Many-to-Many Relationships</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-referencing-relationships">Self-Referencing Relationships</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-and-workflow">Tools and Workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-workflow">Development Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-platforms">Supported Platforms</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting-common-issues">Troubleshooting Common Issues</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax-errors">Syntax Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rendering-issues">Rendering Issues</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="using-mermaid-for-entity-relationship-diagrams">
+<h1>Using Mermaid for Entity-Relationship Diagrams<a class="headerlink" href="#using-mermaid-for-entity-relationship-diagrams" title="Link to this heading">#</a></h1>
+<section id="introduction-to-mermaid-erd">
+<h2>Introduction to Mermaid ERD<a class="headerlink" href="#introduction-to-mermaid-erd" title="Link to this heading">#</a></h2>
+<p>Mermaid is a powerful JavaScript-based diagramming tool that uses text-based syntax to create diagrams, including Entity-Relationship Diagrams (ERDs). Unlike visual drag-and-drop tools, Mermaid allows developers and technical writers to create and maintain database diagrams using simple, readable code that can be version-controlled and integrated directly into documentation.</p>
+<section id="why-choose-mermaid-for-erd">
+<h3>Why Choose Mermaid for ERD?<a class="headerlink" href="#why-choose-mermaid-for-erd" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Text-Based</strong>: Write diagrams as code, making them easy to edit, version, and collaborate on</p></li>
+<li><p><strong>Version Control Friendly</strong>: Store ERD code in Git repositories alongside your database schemas</p></li>
+<li><p><strong>Documentation Integration</strong>: Embed diagrams directly in markdown files, wikis, and technical documentation</p></li>
+<li><p><strong>AI Compatibility</strong>: Easy for AI tools to generate and modify diagram code</p></li>
+<li><p><strong>Platform Independent</strong>: Runs anywhere JavaScript is supported</p></li>
+</ul>
+</section>
+</section>
+<section id="basic-mermaid-erd-syntax">
+<h2>Basic Mermaid ERD Syntax<a class="headerlink" href="#basic-mermaid-erd-syntax" title="Link to this heading">#</a></h2>
+<section id="core-structure">
+<h3>Core Structure<a class="headerlink" href="#core-structure" title="Link to this heading">#</a></h3>
+<p>All Mermaid ER diagrams begin with the <code class="docutils literal notranslate"><span class="pre">erDiagram</span></code> declaration followed by entity definitions and relationships:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="sb">```mermaid</span>
+<span class="s">erDiagram</span>
+<span class="s">    ENTITY_NAME {</span>
+<span class="s">        data_type attribute_name PK</span>
+<span class="s">        data_type attribute_name FK</span>
+<span class="s">        data_type attribute_name</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    ENTITY_1 ||--|| ENTITY_2 : relationship_label</span>
+<span class="sb">```</span>
+</pre></div>
+</div>
+</section>
+<section id="defining-entities-and-attributes">
+<h3>Defining Entities and Attributes<a class="headerlink" href="#defining-entities-and-attributes" title="Link to this heading">#</a></h3>
+<p>Entities are defined with their attributes listed inside curly braces. Each attribute follows the pattern: <code class="docutils literal notranslate"><span class="pre">data_type</span> <span class="pre">attribute_name</span> <span class="pre">constraints</span></code></p>
+<p><strong>Example:</strong></p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="sb">```mermaid</span>
+<span class="s">erDiagram</span>
+<span class="s">    CUSTOMER {</span>
+<span class="s">        string customer_id PK</span>
+<span class="s">        string first_name</span>
+<span class="s">        string last_name</span>
+<span class="s">        string email</span>
+<span class="s">        date created_date</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    ORDER {</span>
+<span class="s">        int order_id PK</span>
+<span class="s">        string customer_id FK</span>
+<span class="s">        date order_date</span>
+<span class="s">        decimal total_amount</span>
+<span class="s">    }</span>
+<span class="sb">```</span>
+</pre></div>
+</div>
+</section>
+<section id="supported-data-types">
+<h3>Supported Data Types<a class="headerlink" href="#supported-data-types" title="Link to this heading">#</a></h3>
+<p>Mermaid doesn’t enforce specific data types, but common conventions include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">string</span></code> for text data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code> for integers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">decimal</span></code> or <code class="docutils literal notranslate"><span class="pre">float</span></code> for numbers with decimals</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">date</span></code>, <code class="docutils literal notranslate"><span class="pre">datetime</span></code> for temporal data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code> for true/false values</p></li>
+</ul>
+</section>
+<section id="primary-and-foreign-keys">
+<h3>Primary and Foreign Keys<a class="headerlink" href="#primary-and-foreign-keys" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PK</span></code> marks an attribute as a primary key</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FK</span></code> marks an attribute as a foreign key</p></li>
+<li><p>Composite keys require manual documentation in comments</p></li>
+</ul>
+</section>
+</section>
+<section id="relationship-cardinality-notation">
+<h2>Relationship Cardinality Notation<a class="headerlink" href="#relationship-cardinality-notation" title="Link to this heading">#</a></h2>
+<p>Mermaid uses specific symbols to represent relationship cardinality:</p>
+<section id="cardinality-symbols">
+<h3>Cardinality Symbols<a class="headerlink" href="#cardinality-symbols" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>`</p></td>
+<td><p></p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>`</p></td>
+<td><p></p></td>
+<td><p>–o{`</p></td>
+</tr>
+<tr class="row-even"><td><p>`}o–</p></td>
+<td><p></p></td>
+<td><p>`</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">}o--o{</span></code></p></td>
+<td><p>Many-to-Many</p></td>
+<td><p>Zero or more to zero or more</p></td>
+</tr>
+<tr class="row-even"><td><p>`</p></td>
+<td><p></p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>`}</p></td>
+<td><p>–</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="reading-relationship-syntax">
+<h3>Reading Relationship Syntax<a class="headerlink" href="#reading-relationship-syntax" title="Link to this heading">#</a></h3>
+<p>The relationship syntax follows this pattern:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ENTITY_1</span> <span class="p">[</span><span class="n">CARDINALITY_1</span><span class="p">]</span><span class="o">--</span><span class="p">[</span><span class="n">CARDINALITY_2</span><span class="p">]</span> <span class="n">ENTITY_2</span> <span class="p">:</span> <span class="s2">&quot;relationship_label&quot;</span>
+</pre></div>
+</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><strong>CARDINALITY_1</strong> applies to ENTITY_1</p></li>
+<li><p><strong>CARDINALITY_2</strong> applies to ENTITY_2</p></li>
+<li><p>The relationship label describes the nature of the relationship</p></li>
+</ul>
+</section>
+</section>
+<section id="complete-erd-examples">
+<h2>Complete ERD Examples<a class="headerlink" href="#complete-erd-examples" title="Link to this heading">#</a></h2>
+<section id="simple-university-database">
+<h3>Simple University Database<a class="headerlink" href="#simple-university-database" title="Link to this heading">#</a></h3>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="sb">```mermaid</span>
+<span class="s">erDiagram</span>
+<span class="s">    STUDENT {</span>
+<span class="s">        string student_id PK</span>
+<span class="s">        string first_name</span>
+<span class="s">        string last_name</span>
+<span class="s">        string email</span>
+<span class="s">        date enrollment_date</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    COURSE {</span>
+<span class="s">        string course_code PK</span>
+<span class="s">        string course_name</span>
+<span class="s">        int credits</span>
+<span class="s">        string department</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    ENROLLMENT {</span>
+<span class="s">        string student_id FK</span>
+<span class="s">        string course_code FK</span>
+<span class="s">        date enrollment_date</span>
+<span class="s">        string grade</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    STUDENT ||--o{ ENROLLMENT : enrolls_in</span>
+<span class="s">    COURSE ||--o{ ENROLLMENT : has_enrollments</span>
+<span class="sb">```</span>
+</pre></div>
+</div>
+</section>
+<section id="e-commerce-system">
+<h3>E-Commerce System<a class="headerlink" href="#e-commerce-system" title="Link to this heading">#</a></h3>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="sb">```mermaid</span>
+<span class="s">erDiagram</span>
+<span class="s">    CUSTOMER {</span>
+<span class="s">        string customer_id PK</span>
+<span class="s">        string first_name</span>
+<span class="s">        string last_name</span>
+<span class="s">        string email</span>
+<span class="s">        string phone</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    ORDER {</span>
+<span class="s">        int order_id PK</span>
+<span class="s">        string customer_id FK</span>
+<span class="s">        date order_date</span>
+<span class="s">        string status</span>
+<span class="s">        decimal total</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    PRODUCT {</span>
+<span class="s">        int product_id PK</span>
+<span class="s">        string product_name</span>
+<span class="s">        string description</span>
+<span class="s">        decimal price</span>
+<span class="s">        int stock_quantity</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    ORDER_ITEM {</span>
+<span class="s">        int order_id FK</span>
+<span class="s">        int product_id FK</span>
+<span class="s">        int quantity</span>
+<span class="s">        decimal unit_price</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    CATEGORY {</span>
+<span class="s">        int category_id PK</span>
+<span class="s">        string category_name</span>
+<span class="s">        string description</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    CUSTOMER ||--o{ ORDER : places</span>
+<span class="s">    ORDER ||--o{ ORDER_ITEM : contains</span>
+<span class="s">    PRODUCT ||--o{ ORDER_ITEM : included_in</span>
+<span class="s">    CATEGORY ||--o{ PRODUCT : categorizes</span>
+<span class="sb">```</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="advanced-mermaid-erd-features">
+<h2>Advanced Mermaid ERD Features<a class="headerlink" href="#advanced-mermaid-erd-features" title="Link to this heading">#</a></h2>
+<section id="weak-entity-representation">
+<h3>Weak Entity Representation<a class="headerlink" href="#weak-entity-representation" title="Link to this heading">#</a></h3>
+<p>While Mermaid doesn’t have explicit syntax for weak entities, you can represent them using comments and relationship labels:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="sb">```mermaid</span>
+<span class="s">erDiagram</span>
+<span class="s">    BUILDING {</span>
+<span class="s">        string building_id PK</span>
+<span class="s">        string building_name</span>
+<span class="s">        string address</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    APARTMENT {</span>
+<span class="s">        string building_id FK</span>
+<span class="s">        string apartment_number</span>
+<span class="s">        int bedrooms</span>
+<span class="s">        decimal rent</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    BUILDING ||--o{ APARTMENT : contains</span>
+<span class="s">    </span>
+<span class="s">    %% Apartment is a weak entity with composite key (building_id, apartment_number)</span>
+<span class="sb">```</span>
+</pre></div>
+</div>
+</section>
+<section id="recursive-relationships">
+<h3>Recursive Relationships<a class="headerlink" href="#recursive-relationships" title="Link to this heading">#</a></h3>
+<p>Represent self-referencing relationships using the same entity on both sides:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="sb">```mermaid</span>
+<span class="s">erDiagram</span>
+<span class="s">    EMPLOYEE {</span>
+<span class="s">        int employee_id PK</span>
+<span class="s">        string name</span>
+<span class="s">        string position</span>
+<span class="s">        int manager_id FK</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    EMPLOYEE }o--|| EMPLOYEE : reports_to</span>
+<span class="sb">```</span>
+</pre></div>
+</div>
+</section>
+<section id="subtype-supertype-relationships">
+<h3>Subtype/Supertype Relationships<a class="headerlink" href="#subtype-supertype-relationships" title="Link to this heading">#</a></h3>
+<p>Model inheritance relationships using one-to-one relationships:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="sb">```mermaid</span>
+<span class="s">erDiagram</span>
+<span class="s">    VEHICLE {</span>
+<span class="s">        string vin PK</span>
+<span class="s">        string make</span>
+<span class="s">        string model</span>
+<span class="s">        int year</span>
+<span class="s">        string vehicle_type</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    CAR {</span>
+<span class="s">        string vin FK</span>
+<span class="s">        int doors</span>
+<span class="s">        string car_type</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    TRUCK {</span>
+<span class="s">        string vin FK</span>
+<span class="s">        decimal cargo_capacity</span>
+<span class="s">        int axles</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    VEHICLE ||--|| CAR : is_a</span>
+<span class="s">    VEHICLE ||--|| TRUCK : is_a</span>
+<span class="sb">```</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="styling-and-configuration">
+<h2>Styling and Configuration<a class="headerlink" href="#styling-and-configuration" title="Link to this heading">#</a></h2>
+<section id="basic-styling">
+<h3>Basic Styling<a class="headerlink" href="#basic-styling" title="Link to this heading">#</a></h3>
+<p>Mermaid supports limited styling options through configuration:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="sb">```mermaid</span>
+<span class="s">erDiagram</span>
+<span class="s">    CUSTOMER {</span>
+<span class="s">        string customer_id PK</span>
+<span class="s">        string name</span>
+<span class="s">        string email</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    ORDER {</span>
+<span class="s">        int order_id PK</span>
+<span class="s">        string customer_id FK</span>
+<span class="s">        date order_date</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    CUSTOMER ||--o{ ORDER : places</span>
+<span class="s">    </span>
+<span class="s">    %% Styling (if supported by your renderer)</span>
+<span class="s">    CUSTOMER {</span>
+<span class="s">        background-color: #e1f5fe</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    ORDER {</span>
+<span class="s">        background-color: #f3e5f5</span>
+<span class="s">    }</span>
+<span class="sb">```</span>
+</pre></div>
+</div>
+</section>
+<section id="themes">
+<h3>Themes<a class="headerlink" href="#themes" title="Link to this heading">#</a></h3>
+<p>Mermaid supports different themes that can be set in the configuration:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">default</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">forest</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dark</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">neutral</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="integration-with-documentation">
+<h2>Integration with Documentation<a class="headerlink" href="#integration-with-documentation" title="Link to this heading">#</a></h2>
+<section id="github-gitlab-markdown">
+<h3>GitHub/GitLab Markdown<a class="headerlink" href="#github-gitlab-markdown" title="Link to this heading">#</a></h3>
+<p>Mermaid is natively supported in GitHub and GitLab markdown files:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># Database Schema Documentation</span>
+
+<span class="gu">## Entity-Relationship Diagram</span>
+
+<span class="sb">```mermaid</span>
+<span class="s">erDiagram</span>
+<span class="s">    USER {</span>
+<span class="s">        int user_id PK</span>
+<span class="s">        string username</span>
+<span class="s">        string email</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    POST {</span>
+<span class="s">        int post_id PK</span>
+<span class="s">        int user_id FK</span>
+<span class="s">        string title</span>
+<span class="s">        text content</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    USER ||--o{ POST : writes</span>
+<span class="sb">```</span>
+
+<span class="gu">## Table Descriptions</span>
+
+<span class="k">-</span><span class="w"> </span><span class="gs">**USERS**</span>: Stores user account information
+<span class="k">-</span><span class="w"> </span><span class="gs">**POSTS**</span>: User-generated content
+</pre></div>
+</div>
+</section>
+<section id="vs-code-integration">
+<h3>VS Code Integration<a class="headerlink" href="#vs-code-integration" title="Link to this heading">#</a></h3>
+<p>Install the Mermaid extension for VS Code to preview diagrams in real-time:</p>
+<ol class="arabic simple">
+<li><p>Install “Mermaid Preview” extension</p></li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">.md</span></code> file with Mermaid code blocks</p></li>
+<li><p>Use the preview pane to see rendered diagrams</p></li>
+</ol>
+</section>
+</section>
+<section id="best-practices-for-mermaid-erd">
+<h2>Best Practices for Mermaid ERD<a class="headerlink" href="#best-practices-for-mermaid-erd" title="Link to this heading">#</a></h2>
+<section id="code-organization">
+<h3>Code Organization<a class="headerlink" href="#code-organization" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Group Related Entities</strong>: Keep entities that have relationships close together in the code</p></li>
+<li><p><strong>Consistent Naming</strong>: Use consistent naming conventions for entities and attributes</p></li>
+<li><p><strong>Descriptive Labels</strong>: Use meaningful relationship labels</p></li>
+<li><p><strong>Comments</strong>: Add comments to explain complex relationships or constraints</p></li>
+</ol>
+</section>
+<section id="readability-tips">
+<h3>Readability Tips<a class="headerlink" href="#readability-tips" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Use line breaks between entity groups</p></li>
+<li><p>Order entities logically (parents before children)</p></li>
+<li><p>Keep diagrams focused - break large schemas into multiple diagrams</p></li>
+<li><p>Use consistent indentation</p></li>
+</ul>
+</section>
+<section id="example-of-well-organized-erd">
+<h3>Example of Well-Organized ERD<a class="headerlink" href="#example-of-well-organized-erd" title="Link to this heading">#</a></h3>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="sb">```mermaid</span>
+<span class="s">erDiagram</span>
+<span class="s">    %% User Management Entities</span>
+<span class="s">    USER {</span>
+<span class="s">        int user_id PK</span>
+<span class="s">        string username</span>
+<span class="s">        string email</span>
+<span class="s">        date created_at</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    PROFILE {</span>
+<span class="s">        int user_id FK</span>
+<span class="s">        string first_name</span>
+<span class="s">        string last_name</span>
+<span class="s">        date date_of_birth</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    USER ||--|| PROFILE : has</span>
+<span class="s">    </span>
+<span class="s">    %% Content Management Entities</span>
+<span class="s">    POST {</span>
+<span class="s">        int post_id PK</span>
+<span class="s">        int user_id FK</span>
+<span class="s">        string title</span>
+<span class="s">        text content</span>
+<span class="s">        date published_at</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    COMMENT {</span>
+<span class="s">        int comment_id PK</span>
+<span class="s">        int post_id FK</span>
+<span class="s">        int user_id FK</span>
+<span class="s">        text content</span>
+<span class="s">        date created_at</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    USER ||--o{ POST : writes</span>
+<span class="s">    USER ||--o{ COMMENT : writes</span>
+<span class="s">    POST ||--o{ COMMENT : has</span>
+<span class="sb">```</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="common-patterns-and-solutions">
+<h2>Common Patterns and Solutions<a class="headerlink" href="#common-patterns-and-solutions" title="Link to this heading">#</a></h2>
+<section id="many-to-many-relationships">
+<h3>Many-to-Many Relationships<a class="headerlink" href="#many-to-many-relationships" title="Link to this heading">#</a></h3>
+<p>Always use junction tables for many-to-many relationships:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="sb">```mermaid</span>
+<span class="s">erDiagram</span>
+<span class="s">    STUDENT {</span>
+<span class="s">        string student_id PK</span>
+<span class="s">        string name</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    COURSE {</span>
+<span class="s">        string course_code PK</span>
+<span class="s">        string title</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    ENROLLMENT {</span>
+<span class="s">        string student_id FK</span>
+<span class="s">        string course_code FK</span>
+<span class="s">        date enrolled_date</span>
+<span class="s">        string grade</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    STUDENT ||--o{ ENROLLMENT : enrolls_in</span>
+<span class="s">    COURSE ||--o{ ENROLLMENT : has_students</span>
+<span class="sb">```</span>
+</pre></div>
+</div>
+</section>
+<section id="self-referencing-relationships">
+<h3>Self-Referencing Relationships<a class="headerlink" href="#self-referencing-relationships" title="Link to this heading">#</a></h3>
+<p>For hierarchical data:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="sb">```mermaid</span>
+<span class="s">erDiagram</span>
+<span class="s">    EMPLOYEE {</span>
+<span class="s">        int employee_id PK</span>
+<span class="s">        string name</span>
+<span class="s">        int manager_id FK</span>
+<span class="s">    }</span>
+<span class="s">    </span>
+<span class="s">    EMPLOYEE }o--|| EMPLOYEE : reports_to</span>
+<span class="sb">```</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="tools-and-workflow">
+<h2>Tools and Workflow<a class="headerlink" href="#tools-and-workflow" title="Link to this heading">#</a></h2>
+<section id="development-workflow">
+<h3>Development Workflow<a class="headerlink" href="#development-workflow" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Design</strong>: Create initial ERD in Mermaid syntax</p></li>
+<li><p><strong>Version Control</strong>: Commit to Git repository</p></li>
+<li><p><strong>Document</strong>: Integrate with markdown documentation</p></li>
+<li><p><strong>Collaborate</strong>: Use code review processes for changes</p></li>
+<li><p><strong>Maintain</strong>: Update as database schema evolves</p></li>
+</ol>
+</section>
+<section id="supported-platforms">
+<h3>Supported Platforms<a class="headerlink" href="#supported-platforms" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>GitHub/GitLab</strong>: Native Mermaid support in markdown</p></li>
+<li><p><strong>VS Code</strong>: With Mermaid preview extension</p></li>
+<li><p><strong>Obsidian</strong>: Native support in notes</p></li>
+<li><p><strong>Notion</strong>: Limited support</p></li>
+<li><p><strong>Documentation Generators</strong>: MkDocs, Docusaurus, etc.</p></li>
+</ul>
+</section>
+</section>
+<section id="troubleshooting-common-issues">
+<h2>Troubleshooting Common Issues<a class="headerlink" href="#troubleshooting-common-issues" title="Link to this heading">#</a></h2>
+<section id="syntax-errors">
+<h3>Syntax Errors<a class="headerlink" href="#syntax-errors" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Missing Braces</strong>: Ensure all entities have opening and closing braces</p></li>
+<li><p><strong>Relationship Format</strong>: Verify cardinality symbols are correct</p></li>
+<li><p><strong>Attribute Format</strong>: Use proper <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">name</span> <span class="pre">constraint</span></code> format</p></li>
+</ul>
+</section>
+<section id="rendering-issues">
+<h3>Rendering Issues<a class="headerlink" href="#rendering-issues" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Platform Support</strong>: Confirm your platform supports Mermaid</p></li>
+<li><p><strong>Version Compatibility</strong>: Some features may require specific Mermaid versions</p></li>
+<li><p><strong>Theme Conflicts</strong>: Check if custom themes affect rendering</p></li>
+</ul>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>Mermaid provides a powerful, text-based approach to creating Entity-Relationship Diagrams that integrates seamlessly with modern development workflows. By treating diagrams as code, teams can version control their database designs, collaborate effectively, and maintain accurate documentation that evolves with their systems.</p>
+<p>The simplicity of Mermaid’s syntax makes it accessible for developers while providing enough expressiveness to model complex database relationships. When combined with version control and modern documentation practices, Mermaid ERDs become a living part of your system documentation rather than static artifacts that quickly become outdated.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="08_final_project.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">08 final project</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-mermaid-erd">Introduction to Mermaid ERD</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-choose-mermaid-for-erd">Why Choose Mermaid for ERD?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-mermaid-erd-syntax">Basic Mermaid ERD Syntax</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-structure">Core Structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-entities-and-attributes">Defining Entities and Attributes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-data-types">Supported Data Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primary-and-foreign-keys">Primary and Foreign Keys</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-cardinality-notation">Relationship Cardinality Notation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cardinality-symbols">Cardinality Symbols</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-relationship-syntax">Reading Relationship Syntax</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-erd-examples">Complete ERD Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-university-database">Simple University Database</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-commerce-system">E-Commerce System</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-mermaid-erd-features">Advanced Mermaid ERD Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weak-entity-representation">Weak Entity Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recursive-relationships">Recursive Relationships</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subtype-supertype-relationships">Subtype/Supertype Relationships</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#styling-and-configuration">Styling and Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-styling">Basic Styling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#themes">Themes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-with-documentation">Integration with Documentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-gitlab-markdown">GitHub/GitLab Markdown</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vs-code-integration">VS Code Integration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices-for-mermaid-erd">Best Practices for Mermaid ERD</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-organization">Code Organization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#readability-tips">Readability Tips</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-well-organized-erd">Example of Well-Organized ERD</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-patterns-and-solutions">Common Patterns and Solutions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#many-to-many-relationships">Many-to-Many Relationships</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-referencing-relationships">Self-Referencing Relationships</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-and-workflow">Tools and Workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-workflow">Development Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-platforms">Supported Platforms</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting-common-issues">Troubleshooting Common Issues</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax-errors">Syntax Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rendering-issues">Rendering Issues</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Nim Dvir
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Massry School of Business, SUNY Albany.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>© 2025 Dr. Nim Dvir — Massry School of Business, SUNY Albany</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

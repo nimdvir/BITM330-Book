@@ -1,0 +1,24 @@
+format: jb-book
+root: intro
+
+parts:
+  - caption: Foundations of Information Systems
+    chapters:
+      - file: Chapters/01_intro_to_data
+      - file: Chapters/02_information_systems
+
+  - caption: Databases and SQL
+    chapters:
+      - file: Chapters/03_database_design
+      - file: Chapters/04_sql_basics
+      - file: Chapters/05_advanced_sql
+      - file: Chapters/06_access_projects
+
+  - caption: Business Intelligence and Analytics
+    chapters:
+      - file: Chapters/07_business_intelligence
+
+  - caption: Projects and Case Studies
+    chapters:
+      - file: Chapters/08_final_project
+      - file: Chapters/mermeaid
